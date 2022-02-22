@@ -20,6 +20,7 @@ def btnCommand(command):
     return 0
 
 def vienads():
+    
     num2=int(e.get())
     result=0
     if mathOp=='+':
@@ -31,7 +32,7 @@ def vienads():
     elif mathOp=='/':
         result=num1/num2
     elif mathOp=='%':
-        result=num1/100
+        result=num2/num1
     else:
         result=0
     e.delete(0,END)
