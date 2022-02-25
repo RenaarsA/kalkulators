@@ -1,4 +1,8 @@
+from distutils import command
 from tkinter import*
+from math import*
+from tokenize import Double
+
 mansLogs=Tk()
 mansLogs.title('Kalkulators')
 
@@ -15,13 +19,14 @@ def btnCommand(command):
     global num1 #jāiegaumē skaitlis un darbība
     global mathOp #matemātisks operātors
     mathOp=command #+,-,*,/
-    num1=int(e.get())
+    num1=str(e.get())
     e.delete(0,END)
     return 0
 
 def vienads():
-    
-    num2=int(e.get())
+    global num2
+    num2=(e.get())
+    num3= int (num1)
     result=0
     if mathOp=='+':
         result=num1+num2
@@ -32,11 +37,11 @@ def vienads():
     elif mathOp=='/':
         result=num1/num2
     elif mathOp=='%':
-        result=num2/num1
+        result=num3 / 100
     else:
         result=0
     e.delete(0,END)
-    e.insert(0,str(result))
+    e.insert(0,float(result))
     return 0
 
 def notirit():
@@ -47,27 +52,27 @@ def notirit():
 
 
 
-e=Entry(mansLogs,width=15,font=('Arial Black',20))
-btn0=Button(mansLogs,text='0',padx='40',pady='20',command=lambda:btnClick(0))
-btn1=Button(mansLogs,text='1',padx='40',pady='20',command=lambda:btnClick(1))
-btn2=Button(mansLogs,text='2',padx='40',pady='20',command=lambda:btnClick(2))
-btn3=Button(mansLogs,text='3',padx='40',pady='20',command=lambda:btnClick(3))
-btn4=Button(mansLogs,text='4',padx='40',pady='20',command=lambda:btnClick(4))
-btn5=Button(mansLogs,text='5',padx='40',pady='20',command=lambda:btnClick(5))
-btn6=Button(mansLogs,text='6',padx='40',pady='20',command=lambda:btnClick(6))
-btn7=Button(mansLogs,text='7',padx='40',pady='20',command=lambda:btnClick(7))
-btn8=Button(mansLogs,text='8',padx='40',pady='20',command=lambda:btnClick(8))
-btn9=Button(mansLogs,text='9',padx='40',pady='20',command=lambda:btnClick(9))
-btnreiz=Button(mansLogs,text='*',padx='40',pady='20',command=lambda:btnCommand('*'))
-btndali=Button(mansLogs,text='/',padx='40',pady='20',command=lambda:btnCommand('/'))
-btnpiesk=Button(mansLogs,text='+',padx='40',pady='20',command=lambda:btnCommand('+'))
-btnatnem=Button(mansLogs,text='-',padx='40',pady='20',command=lambda:btnCommand('-'))
-btnVien=Button(mansLogs,text='=',padx='40',pady='20',command=vienads)
-btnDzest=Button(mansLogs,text='C',padx='40',pady='20',command=notirit)
-btnkoma=Button(mansLogs,text=',',padx='40',pady='20',command=lambda:btnCommand('.'))
-btnieka=Button(mansLogs,text='( )',padx='37',pady='20')
-btnproc=Button(mansLogs,text='%',padx='40',pady='20',command=lambda:btnCommand('%'))
-btnplmi=Button(mansLogs,text='+/-',padx='34',pady='20')
+e=Entry(mansLogs,width=15,bd=20,font=('Arial Black',20))
+btn0=Button(mansLogs,text='0',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(0))
+btn1=Button(mansLogs,text='1',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(1))
+btn2=Button(mansLogs,text='2',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(2))
+btn3=Button(mansLogs,text='3',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(3))
+btn4=Button(mansLogs,text='4',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(4))
+btn5=Button(mansLogs,text='5',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(5))
+btn6=Button(mansLogs,text='6',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(6))
+btn7=Button(mansLogs,text='7',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(7))
+btn8=Button(mansLogs,text='8',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(8))
+btn9=Button(mansLogs,text='9',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(9))
+btnreiz=Button(mansLogs,text='*',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('*'))
+btndali=Button(mansLogs,text='/',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('/'))
+btnpiesk=Button(mansLogs,text='+',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('+'))
+btnatnem=Button(mansLogs,text='-',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('-'))
+btnVien=Button(mansLogs,text='=',bd=20,font=('Arial Black',20),padx='40',pady='20',command=vienads)
+btnDzest=Button(mansLogs,text='C',bd=20,font=('Arial Black',20),padx='40',pady='20',command=notirit)
+btnkoma=Button(mansLogs,text=',',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('.'))
+btnieka=Button(mansLogs,text='( )',bd=20,font=('Arial Black',20),padx='37',pady='20')
+btnproc=Button(mansLogs,text='%',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('%'))
+btnplmi=Button(mansLogs,text='+/-',bd=20,font=('Arial Black',20),padx='34',pady='20')
 
 e.grid(row=0,column=0,columnspan=4)
 
