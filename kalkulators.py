@@ -42,12 +42,6 @@ def vienads():
     e.delete(0,END)
     e.insert(0,str(result))
     return 0
-def pi():
-
-    if mathOp=='π':
-        result=pi
-    return result
-
 def sq_rt():
     global operator
     global num1
