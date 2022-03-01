@@ -1,7 +1,9 @@
+from ast import operator
 from distutils import command
+import numbers
 from tkinter import*
 from math import*
-from tokenize import Double
+from unittest import result
 
 mansLogs=Tk()
 mansLogs.title('Kalkulators')
@@ -15,18 +17,17 @@ def btnClick(number):
     return 0
 
 def btnCommand(command):
-    global number 
+    global number
     global num1 #jāiegaumē skaitlis un darbība
     global mathOp #matemātisks operātors
     mathOp=command #+,-,*,/
-    num1=str(e.get())
+    num1=float(e.get())
     e.delete(0,END)
     return 0
 
 def vienads():
     global num2
-    num2=(e.get())
-    num3= int (num1)
+    num2=(float(e.get()))
     result=0
     if mathOp=='+':
         result=num1+num2
@@ -36,13 +37,47 @@ def vienads():
         result=num1*num2
     elif mathOp=='/':
         result=num1/num2
-    elif mathOp=='%':
-        result=num3 / 100
     else:
         result=0
     e.delete(0,END)
-    e.insert(0,float(result))
+    e.insert(0,str(result))
     return 0
+def pi():
+
+    if mathOp=='π':
+        result=pi
+    return result
+
+def sq_rt():
+    global operator
+    global num1
+    global mathOp
+    mathOp=command
+    num1=(float(e.get()))
+    num1=sqrt(num1)
+    e.delete(0,END)
+    e.insert(0,num1)
+    result
+
+def kvad():
+    global operator
+    global num1
+    global mathOp
+    mathOp=command
+    num1=(float(e.get())**2)
+    e.delete(0,END)
+    e.insert(0,num1)
+    result
+
+def min():
+    global operator
+    global mathOp #matemātiskais operators
+    global num1
+    num1=-(float(e.get()))
+    e.delete(0,END)
+    e.insert(0,str(num1))
+    return 0
+
 
 def notirit():
     e.delete(0,END)
@@ -69,15 +104,15 @@ btnpiesk=Button(mansLogs,text='+',bd=20,font=('Arial Black',20),padx='40',pady='
 btnatnem=Button(mansLogs,text='-',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('-'))
 btnVien=Button(mansLogs,text='=',bd=20,font=('Arial Black',20),padx='40',pady='20',command=vienads)
 btnDzest=Button(mansLogs,text='C',bd=20,font=('Arial Black',20),padx='40',pady='20',command=notirit)
-btnkoma=Button(mansLogs,text=',',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('.'))
-btnieka=Button(mansLogs,text='( )',bd=20,font=('Arial Black',20),padx='37',pady='20')
-btnproc=Button(mansLogs,text='%',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnCommand('%'))
-btnplmi=Button(mansLogs,text='+/-',bd=20,font=('Arial Black',20),padx='34',pady='20')
+btnkoma=Button(mansLogs,text=',',bd=20,font=('Arial Black',20),padx='45',pady='20',command=lambda:btnCommand('.'))
+btnkvad=Button(mansLogs,text='x²',bd=20,font=('Arial Black',20),padx='37',pady='20',command=kvad)
+btnproc=Button(mansLogs,text='√',bd=20,font=('Arial Black',20),padx='40',pady='20',command=sq_rt)
+btnpi=Button(mansLogs,text='+/-',bd=20,font=('Arial Black',20),padx='31',pady='20',command=min)
 
 e.grid(row=0,column=0,columnspan=4)
 
 btnDzest.grid(row=1,column=0)
-btnieka.grid(row=1,column=1)
+btnkvad.grid(row=1,column=1)
 btnproc.grid(row=1,column=2)
 btndali.grid(row=1,column=3)
 
@@ -99,7 +134,7 @@ btn2.grid(row=4,column=1)
 btn3.grid(row=4,column=2)
 btnpiesk.grid(row=4,column=3)
 
-btnplmi.grid(row=5,column=0)
+btnpi.grid(row=5,column=0)
 btn0.grid(row=5,column=1)
 btnkoma.grid(row=5,column=2)
 btnVien.grid(row=5,column=3)
