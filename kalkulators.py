@@ -89,7 +89,7 @@ def notirit():
 
 
 
-e=Entry(mansLogs,width=15,bg='#09151e',bd=20,font=('Arial Black',20))
+e=Entry(mansLogs,width=15,bg='white',bd=20,font=('Arial Black',20))
 btn0=Button(mansLogs,text='0',fg='white',bg='dimgray',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(0))
 btn1=Button(mansLogs,text='1',fg='white',bg='dimgray',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(1))
 btn2=Button(mansLogs,text='2',fg='white',bg='dimgray',bd=20,font=('Arial Black',20),padx='40',pady='20',command=lambda:btnClick(2))
